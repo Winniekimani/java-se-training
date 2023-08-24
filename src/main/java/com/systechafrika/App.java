@@ -7,9 +7,11 @@ public class App {
 
     public static void main(String[] args) {
         LOGGER.info("Hello World!");
+
     }
 
     public int add(int a, int b) {
+
         return a + b;
     }
 

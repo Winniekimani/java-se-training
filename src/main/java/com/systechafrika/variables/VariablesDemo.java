@@ -17,6 +17,7 @@ public class VariablesDemo {
         double radius = 7.0;
         double area = PI * radius * radius;
         LOGGER.info("the area of the circle is " + area);
+
     }
 
 }
