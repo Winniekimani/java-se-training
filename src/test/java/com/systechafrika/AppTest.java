@@ -31,6 +31,7 @@ public class AppTest {
 
     }
 
+    // Check that an object is not null
     @Test
     public void assertNotNullTest() {
         String str5 = "abc";
@@ -38,13 +39,14 @@ public class AppTest {
 
     }
 
+    // Check that an object is null
     @Test
     public void assertNullTest() {
         String str5 = null;
         Assertions.assertNull(str5);
     }
 
-    // this test checks if array are equal
+    // Check whether two arrays are equal to each other.
     @Test
     public void assertArrayEqualTest() {
 
@@ -61,6 +63,44 @@ public class AppTest {
 
         // here our test will run because array elements are the same
         Assertions.assertArrayEquals(expectedArray, actualArray);
+    }
+
+    // Check that a condition is true
+    @Test
+    public void assertTrueTest() {
+        int val1 = 5;
+        int val2 = 25;
+
+        Assertions.assertTrue(val2 > val1);
+
+    }
+
+    // Check that a condition is false
+    @Test
+    public void assertFalseTest() {
+        int val1 = 5;
+        int val2 = 25;
+
+        Assertions.assertFalse(val2 < val1);
+
+    }
+
+    @Test
+    public void assertSameTest() {
+        int val1 = 5;
+        int val2 = 5;
+
+        Assertions.assertSame(val1, val2);
+
+    }
+
+    @Test
+    public void assertNotSameTest() {
+        int val1 = 5;
+        int val2 = 25;
+
+        Assertions.assertNotSame(val1, val2);
+
     }
 
     @Test
