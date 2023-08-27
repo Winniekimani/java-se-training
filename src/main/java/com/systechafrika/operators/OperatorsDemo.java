@@ -80,11 +80,52 @@ public class OperatorsDemo {
 
     }
 
+    public void andLogicalOperators() {
+
+        int x = 5;
+        int y = 3;
+        if (x >= 10 && y >= 10) {
+
+            LOGGER.info("allowed to vote");// prints true if both are true
+        } else {
+            LOGGER.info("not allowed to vote");
+        }
+
+    }
+
+    public void orLogicalOperators() {
+
+        int x = 5;
+        int y = 3;
+        if (x <= 10 || y <= 10) {
+
+            LOGGER.info("allowed to vote");// prints true if both are true
+        } else {
+            LOGGER.info("not allowed to vote");
+        }
+
+    }
+
+    public void notLogicalOperators() {
+
+        int x = 5;
+        if (x >= 18) {
+
+            LOGGER.info("allowed to vote");// prints true if both are true
+        } else {
+            LOGGER.info("not allowed to vote");
+        }
+
+    }
+
     public static void main(String[] args) {
         OperatorsDemo a = new OperatorsDemo();
         a.arithmeticOperators();
         a.assignmentOperators();
         a.comparisonOperators();
+        a.andLogicalOperators();
+        a.orLogicalOperators();
+        a.notLogicalOperators();
 
     }
 
