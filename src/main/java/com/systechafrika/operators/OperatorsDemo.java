@@ -82,8 +82,8 @@ public class OperatorsDemo {
 
     public static void main(String[] args) {
         OperatorsDemo a = new OperatorsDemo();
-        // a.arithmeticOperators();
-        // a.assignmentOperators();
+        a.arithmeticOperators();
+        a.assignmentOperators();
         a.comparisonOperators();
 
     }
