@@ -15,6 +15,23 @@ public class LoopingStatement {
 
     }
 
+    public void whileLoopStatement() {
+        int index = 8;
+        while (index <= 10) {
+            LOGGER.info("MY INDEX IS " + index);
+            index++;
+        }
+    }
+
+    public void doWhileStatement() {
+        int index = 0;
+        do {
+            LOGGER.info("MY INDEX IS " + index);
+            index++;
+        } while (index <= 10);
+
+    }
+
     public void breakJumpStatement() {
         LOGGER.info("before my loop");
         for (int index = 0; index < 10; index++) {
@@ -56,7 +73,9 @@ public class LoopingStatement {
 
     public static void main(String[] args) {
         LoopingStatement a = new LoopingStatement();
-        a.forLoopStatement();
+        // a.forLoopStatement();
+        // a.whileLoopStatement();
+        a.doWhileStatement();
         // a.continueJumpStatement();
         // a.breakJumpStatement();
         // a.returnJumpStatement();
