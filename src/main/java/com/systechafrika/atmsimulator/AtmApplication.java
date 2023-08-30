@@ -55,7 +55,6 @@ public class AtmApplication {
                             balance = balance + deposit;
                             System.out.println(
                                     "Your Money has been successfully deposited.Your new balance is:" + balance);
-
                             break;
                         case 3:
                             System.out.println("Please enter the amount you want to withdraw ");
