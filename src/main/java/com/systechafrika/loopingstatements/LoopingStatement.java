@@ -73,12 +73,12 @@ public class LoopingStatement {
 
     public static void main(String[] args) {
         LoopingStatement a = new LoopingStatement();
-        // a.forLoopStatement();
-        // a.whileLoopStatement();
+        a.forLoopStatement();
+        a.whileLoopStatement();
         a.doWhileStatement();
-        // a.continueJumpStatement();
-        // a.breakJumpStatement();
-        // a.returnJumpStatement();
+        a.continueJumpStatement();
+        a.breakJumpStatement();
+        a.returnJumpStatement();
 
     }
 }
