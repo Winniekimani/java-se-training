@@ -15,10 +15,13 @@ public class ControlFlow {
 
         } else if (maths <= 69 && maths >= 50) {
             grade = 'B';
-        } else {
+        } else if (maths <= 49 && maths >= 30) {
             grade = 'D';
+        } else {
+            grade = 'E';
             LOGGER.info("student grade" + grade);
         }
+
     }
 
     public void switchStatement() {
@@ -43,7 +46,7 @@ public class ControlFlow {
 
     public static void main(String[] args) {
         ControlFlow a = new ControlFlow();
-        // a.ifElseStatement();
+        a.ifElseStatement();
         a.switchStatement();
 
     }

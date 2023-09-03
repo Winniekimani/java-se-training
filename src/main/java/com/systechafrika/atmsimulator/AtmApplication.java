@@ -72,6 +72,23 @@ public class AtmApplication {
                             break;
                         case 4:
                             System.out.println("Transfer Cash option selected.");
+                            System.out.println("please enter the account number you want to transfer cash to:");
+                            int accNo = scanner.nextInt();
+                            System.out.println("Enter the amount you want to transfer to" + accNo);
+                            double amountToTransfer = scanner.nextDouble();
+                            System.out.println("kindly wait as we process your tRansaction");
+
+                            if (amountToTransfer > balance) {
+                                System.out.println(
+                                        "sorry,you do not have sufficient funds to transfer" + amountToTransfer);
+                            } else if (amountToTransfer < 0) {
+                                System.out.println("kindly enter a positive number value");
+                            } else {
+                                balance = balance - amountToTransfer;
+                                System.out.println("Transer of Ksh " + amountToTransfer + " to account: " + accNo
+                                        + "is successful .New balance: " + balance);
+                            }
+
                             break;
 
                         case 5:
