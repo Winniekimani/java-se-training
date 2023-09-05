@@ -32,7 +32,7 @@ public class WorkingWithArrays {
 
     public static void main(String[] args) {
         WorkingWithArrays a = new WorkingWithArrays();
-        // a.singleDimensionalArray();
+        a.singleDimensionalArray();
         a.multiDimensionalArray();
 
     }
