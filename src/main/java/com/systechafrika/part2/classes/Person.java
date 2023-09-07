@@ -1,4 +1,4 @@
-package com.part2;
+package com.systechafrika.part2.classes;
 
 import java.util.logging.Logger;
 
