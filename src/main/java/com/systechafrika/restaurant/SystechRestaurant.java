@@ -40,7 +40,7 @@ public class SystechRestaurant {
                     orderItems.add(tostiItem);
                     break;
                 case 4:
-                    // Handle choice 4 (Ndengu and Accomplishments)
+                    // Handle choice 4 (Ndengu and Accomplishment
                     MenuItem ndenguItem = menuItems.get(3); // Ndengu and Accomplishments is the fourth item
                     orderItems.add(ndenguItem);
                     break;
@@ -171,6 +171,7 @@ public class SystechRestaurant {
         } else {
             System.out.println("Invalid menu item number.");
             return; // Exit the method if the menu item is invalid
+            // dddkdkqdwdwdid
         }
     }
 
