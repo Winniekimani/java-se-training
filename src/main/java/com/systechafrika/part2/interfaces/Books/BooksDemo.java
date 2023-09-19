@@ -22,5 +22,18 @@ public class BooksDemo {
         } else {
             System.out.println("Sorry,we couldn't find the Book.");
         }
+
+        // update book
+        String isbnToUpdate = "ISBN-001";
+        String newTitle = "Kidagaa kimemwozea";
+        System.out.println("please wait as we update the book with this isbn:" + isbnToUpdate + " to the new title:"
+                + newTitle);
+        Book updatedBook = bookController.updateBook(isbnToUpdate, newTitle);
+        if (updatedBook != null) {
+            System.out.println("Book updated successfully: " + updatedBook);
+        } else {
+            System.out.println("Book not found.");
+        }
     }
+
 }
