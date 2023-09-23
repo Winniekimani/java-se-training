@@ -8,7 +8,9 @@ public class JdbcDemo {
         try {
             DataAccess mysql = new MysqlDataAccess();
             mysql.connect();
-            ResultSet adminResultSet = mysql.executeQuery("SELECT * from tbl_admin");
+            ResultSet adminResultSet = mysql.executeQuery("SELECT * from tbl_admin");// here i replaced mhusikas table
+                                                                                     // with a table i created in mysql
+                                                                                     // for the code to run
             while (adminResultSet.next()) {
                 int adminId = adminResultSet.getInt("id");
                 String adminName = adminResultSet.getString("fullname");
