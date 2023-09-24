@@ -1,4 +1,4 @@
-package com.systechafrika.controlflow;
+package com.systechafrika.part1.controlflow;
 
 import java.util.logging.Logger;
 

@@ -1,4 +1,4 @@
-package com.systechafrika.abstractclasses;
+package com.systechafrika.part2.abstractclasses;
 
 public class Dog extends Animal {
 

@@ -1,4 +1,4 @@
-package com.systechafrika.variables;
+package com.systechafrika.part1.variables;
 
 import java.util.logging.Logger;
 

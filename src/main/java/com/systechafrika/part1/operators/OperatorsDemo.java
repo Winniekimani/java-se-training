@@ -1,4 +1,4 @@
-package com.systechafrika.operators;
+package com.systechafrika.part1.operators;
 
 import java.util.logging.Logger;
 

@@ -1,4 +1,4 @@
-package com.systechafrika.loopingstatements;
+package com.systechafrika.part1.loopingstatements;
 
 import java.util.logging.Logger;
 

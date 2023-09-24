@@ -1,4 +1,4 @@
-package com.systechafrika.stringandstringbuilder;
+package com.systechafrika.part1.stringandstringbuilder;
 
 import java.util.logging.Logger;
 

@@ -1,4 +1,4 @@
-package com.systechafrika.arrays;
+package com.systechafrika.part1.arrays;
 
 import java.util.logging.Logger;
 
