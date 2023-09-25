@@ -1,6 +1,6 @@
-2023-09-24 12:14:09 | main | INFO | Info message logging
-2023-09-24 12:14:09 | main | SEVERE | Error message logging
-2023-09-24 12:14:09 | main | WARNING | Warning message logging
-2023-09-24 12:14:09 | test | INFO | Info message logging test
-2023-09-24 12:14:09 | test | SEVERE | Error message logging test
-2023-09-24 12:14:09 | test | WARNING | Warning message logging test
+2023-09-25 18:45:33 | main | INFO | Info message logging
+2023-09-25 18:45:34 | main | SEVERE | Error message logging
+2023-09-25 18:45:34 | main | WARNING | Warning message logging
+2023-09-25 18:45:34 | test | INFO | Info message logging test
+2023-09-25 18:45:34 | test | SEVERE | Error message logging test
+2023-09-25 18:45:34 | test | WARNING | Warning message logging test
