@@ -64,6 +64,11 @@ public class SystechPosSystem {
                     // Display receipt
                     displayReceipt();
                     break;
+                case 4:
+                    // Exit the program
+                    System.out.println("Exiting the program. Goodbye!");
+                    System.exit(0);
+                    break;
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
             }
@@ -79,6 +84,7 @@ public class SystechPosSystem {
         System.out.println("1:ADD ITEM");
         System.out.println("2:MAKE PAYMENT");
         System.out.println("3: DISPLAY RECEIPT");
+        System.out.println("4: EXIT");
         System.out.println("''''''''''''''''''''''''''''''''''''\n");
 
         System.out.print("Choose your option: ");
@@ -129,15 +135,31 @@ public class SystechPosSystem {
         System.out.println("--------------------------------------------");
         System.out.println("Total: " + totalAmount);
 
-        // Ask for the amount given by the customer
+        double amountGiven = getAmountFromUser();
+
+        handlePayment(totalAmount, amountGiven);
+
+        // Return to displaying the main menu
+        // displayMenu();
+    }
+
+    private double getAmountFromUser() {
         System.out.print("Enter the amount given by the customer: ");
         double amountGiven = scanner.nextDouble();
-        scanner.nextLine(); // newline
+        scanner.nextLine(); // Consume newline
+        return amountGiven;
+    }
 
-        // Calculate and display the change
-        double change = amountGiven - totalAmount;
-        System.out.println("Change: " + change);
-        System.out.println("THANK YOU FOR SHOPPING WITH US");
+    // Helper method to handle payment logic
+    private void handlePayment(double totalAmount, double amountGiven) {
+        if (amountGiven < totalAmount) {
+            System.out.println("Less amount given. Please try a higher amount.");
+        } else {
+            // Calculate and display the change
+            double change = amountGiven - totalAmount;
+            System.out.println("Change: " + change);
+            System.out.println("THANK YOU FOR SHOPPING WITH US");
+        }
     }
 
     // displays a receipt that shows the items in the cart,
