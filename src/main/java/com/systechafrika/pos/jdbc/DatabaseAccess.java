@@ -1,5 +1,6 @@
 package com.systechafrika.pos.jdbc;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+
+import com.systechafrika.pos.logging.FileLogging;
 
 public class DatabaseAccess {
 
@@ -19,6 +22,9 @@ public class DatabaseAccess {
         Scanner scanner = new Scanner(System.in);
 
         try {
+
+            // Initialize logger
+            FileLogging.setupLogger();
             // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -28,7 +34,7 @@ public class DatabaseAccess {
             // Create Statement from the connection
             Statement statement = connection.createStatement();
 
-            // Perform any database ..
+            // Perform database ..
             createTableIfNotExists(statement);
             insertData(scanner, connection);
             retrieveData(statement);
@@ -38,10 +44,13 @@ public class DatabaseAccess {
             connection.close();
 
         } catch (ClassNotFoundException e) {
-            System.err.println("JDBC driver not found.");
+            FileLogging.logError("JDBC driver not found.");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.err.println("Database connection error.");
+            FileLogging.logError("Database connection error.");
+            e.printStackTrace();
+        } catch (IOException e) {
+            FileLogging.logError("Failed to initialize logger.");
             e.printStackTrace();
         } finally {
             try {
@@ -87,7 +96,7 @@ public class DatabaseAccess {
         preparedStatement.setString(4, category);
 
         int rowsInserted = preparedStatement.executeUpdate();
-        System.out.println(rowsInserted + " row(s) inserted.");
+        FileLogging.logInfo(rowsInserted + " row(s) inserted.");
 
         // Close the PreparedStatement
         preparedStatement.close();
@@ -104,12 +113,12 @@ public class DatabaseAccess {
             String description = resultSet.getString("description");
             String category = resultSet.getString("category");
 
-            System.out.println("Product ID: " + productId);
-            System.out.println("Product Name: " + productName);
-            System.out.println("Price: " + price);
-            System.out.println("Description: " + description);
-            System.out.println("Category: " + category);
-            System.out.println("------------------------");
+            FileLogging.logInfo("Product ID: " + productId);
+            FileLogging.logInfo("Product Name: " + productName);
+            FileLogging.logInfo("Price: " + price);
+            FileLogging.logInfo("Description: " + description);
+            FileLogging.logInfo("Category: " + category);
+            FileLogging.logInfo("------------------------");
         }
         // Close the ResultSet
         resultSet.close();
