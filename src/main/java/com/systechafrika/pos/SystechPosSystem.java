@@ -1,7 +1,14 @@
 package com.systechafrika.pos;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import com.systechafrika.pos.customexceptions.EmptyCartException;
+import com.systechafrika.pos.customexceptions.InsufficientPaymentException;
+import com.systechafrika.pos.customexceptions.InvalidOptionException;
+import com.systechafrika.pos.customexceptions.MaxLoginAttemptsExceededException;
+import com.systechafrika.pos.customexceptions.ReceiptPrintingException;
 
 public class SystechPosSystem {
 
@@ -41,8 +48,13 @@ public class SystechPosSystem {
             }
 
             if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
-                System.out.println("You have exceeded the maximum login attempts. Exiting.");
-                System.exit(1);
+                try {
+                    throw new MaxLoginAttemptsExceededException("Maximum login attempts exceeded. Exiting.");
+                } catch (MaxLoginAttemptsExceededException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                    System.exit(1);
+                }
             }
         }
 
@@ -54,7 +66,23 @@ public class SystechPosSystem {
             displayMenu();
             System.out.print("Choose an option: ");
             int option = scanner.nextInt();
-            scanner.nextLine(); // newline
+            scanner.nextLine();
+            try {
+                if (option < 1 || option > 4) {
+                    throw new InvalidOptionException("Invalid option. Please choose a valid option.");
+                }
+            } catch (InputMismatchException e) {
+                scanner.nextLine(); // Consume newline
+                try {
+                    throw new InvalidOptionException("Invalid option format. Please choose a valid option.");
+                } catch (InvalidOptionException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (InvalidOptionException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+                continue;
+            }
 
             switch (option) {
                 case 1:
@@ -63,11 +91,19 @@ public class SystechPosSystem {
                     break;
                 case 2:
                     // Make payment
-                    makePayment();
+                    try {
+                        makePayment();
+                    } catch (EmptyCartException | InsufficientPaymentException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 3:
                     // Display receipt
-                    displayReceipt();
+                    try {
+                        displayReceipt();
+                    } catch (ReceiptPrintingException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 4:
                     // Exit the program
@@ -125,31 +161,35 @@ public class SystechPosSystem {
     // this method here calculates the total payment based on the items in the cart
     // and
     // handles the payment process, including providing change.
-    public void makePayment() {
-        if (cart.isEmpty()) {
-            System.out.println("No items in the cart. Add items before making a payment.");
-            return;
+    public void makePayment() throws EmptyCartException, InsufficientPaymentException {
+        try {
+            if (cart.isEmpty()) {
+                throw new EmptyCartException("No items in the cart. Add items before making a payment.");
+            }
+
+            System.out.println("Item Code   Quantity   Unit Price   Total Value");
+            System.out.println("--------------------------------------------");
+            double totalAmount = 0.0;
+
+            for (Item item : cart) {
+                System.out.println(item.getItemCode() + "   " + item.getQuantity() + "   " +
+                        item.getUnitPrice() + "   " + item.getTotalValue());
+                totalAmount += item.getTotalValue();
+            }
+
+            System.out.println("--------------------------------------------");
+            System.out.println("Total: " + totalAmount);
+
+            double amountGiven = getAmountFromUser();
+
+            handlePayment(totalAmount, amountGiven);
+
+            // Return to displaying the main menu
+            // displayMenu();
+        } catch (EmptyCartException | InsufficientPaymentException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace(); // prints full exception details
         }
-
-        System.out.println("Item Code   Quantity   Unit Price   Total Value");
-        System.out.println("--------------------------------------------");
-        double totalAmount = 0.0;
-
-        for (Item item : cart) {
-            System.out.println(item.getItemCode() + "   " + item.getQuantity() + "   " +
-                    item.getUnitPrice() + "   " + item.getTotalValue());
-            totalAmount += item.getTotalValue();
-        }
-
-        System.out.println("--------------------------------------------");
-        System.out.println("Total: " + totalAmount);
-
-        double amountGiven = getAmountFromUser();
-
-        handlePayment(totalAmount, amountGiven);
-
-        // Return to displaying the main menu
-        // displayMenu();
     }
 
     private double getAmountFromUser() {
@@ -160,9 +200,9 @@ public class SystechPosSystem {
     }
 
     // Helper method to handle payment logic
-    private void handlePayment(double totalAmount, double amountGiven) {
+    private void handlePayment(double totalAmount, double amountGiven) throws InsufficientPaymentException {
         if (amountGiven < totalAmount) {
-            System.out.println("Less amount given. Please try a higher amount.");
+            throw new InsufficientPaymentException("Less amount given. Please try a higher amount.");
         } else {
             // Calculate and display the change
             double change = amountGiven - totalAmount;
@@ -173,10 +213,10 @@ public class SystechPosSystem {
 
     // displays a receipt that shows the items in the cart,
     // their quantities, unit prices, and total values.
-    public void displayReceipt() {
+    public void displayReceipt() throws ReceiptPrintingException {
 
         if (cart.isEmpty()) {
-            System.out.println("No items in the cart. Add items before displaying the receipt.");
+            throw new ReceiptPrintingException("No items in the cart. Add items before displaying the receipt");
         } else {
             System.out.println("***************");
             System.out.println("RECEIPT");
