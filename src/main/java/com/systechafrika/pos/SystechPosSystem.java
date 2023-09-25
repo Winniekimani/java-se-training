@@ -45,7 +45,12 @@ public class SystechPosSystem {
                 System.exit(1);
             }
         }
-        while (true) {
+
+        // here i'll use a boolean variable to control the main menu loop
+        // The loop will continue as long as continueShopping is true,
+        // and it will exit when the user chooses to exit by selecting option 4.
+        boolean continueShopping = true;
+        while (continueShopping) {
             displayMenu();
             System.out.print("Choose an option: ");
             int option = scanner.nextInt();
@@ -71,21 +76,25 @@ public class SystechPosSystem {
                     break;
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
+                    continueShopping = false; // here we Set the boolean to false to exit the loop
+                    break;
             }
         }
+
+        scanner.close();
 
     }
 
     public static void displayMenu() {
-        System.out.println("************************************\n");
-        System.out.println("********** SYSTECH POS SYSTEM ******\n");
-        System.out.println("''''''''''''''''''''''''''''''''''''\n");
-        System.out.println("____________________________________\n");
+        System.out.println("*********************");
+        System.out.println("SYSTECH POS SYSTEM");
+        System.out.println("*********************");
+        System.out.println("_______________________\n");
         System.out.println("1:ADD ITEM");
         System.out.println("2:MAKE PAYMENT");
         System.out.println("3: DISPLAY RECEIPT");
         System.out.println("4: EXIT");
-        System.out.println("''''''''''''''''''''''''''''''''''''\n");
+        System.out.println("*********************");
 
         System.out.print("Choose your option: ");
 
