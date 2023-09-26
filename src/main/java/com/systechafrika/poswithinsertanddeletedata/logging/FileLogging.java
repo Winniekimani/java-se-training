@@ -1,4 +1,4 @@
-package com.systechafrika.pos.logging;
+package com.systechafrika.poswithinsertanddeletedata.logging;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -15,7 +15,7 @@ public class FileLogging {
     private static final Logger LOGGER = Logger.getLogger(FileLogging.class.getName());
 
     public static void setupLogger() throws IOException {
-        FileHandler fileHandler = new FileHandler("log.txt", true);
+        FileHandler fileHandler = new FileHandler("pos-update.txt", true);
         CustomFormatter formatter = new CustomFormatter();
         LOGGER.addHandler(fileHandler);
         fileHandler.setFormatter(formatter);

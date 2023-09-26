@@ -1,4 +1,4 @@
-package com.systechafrika.pos.jdbc;
+package com.systechafrika.poswithinsertanddeletedata.jdbc;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,14 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-//import java.util.logging.Logger;
+import java.util.logging.Logger;
 
-import com.systechafrika.pos.Item;
-import com.systechafrika.pos.logging.FileLogging;
+import com.systechafrika.poswithinsertanddeletedata.Item;
+import com.systechafrika.poswithinsertanddeletedata.logging.FileLogging;
 
 public class DatabaseAccess {
-    // private static final Logger LOGGER =
-    // Logger.getLogger(DatabaseAccess.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DatabaseAccess.class.getName());
     private static final String DB_URL = "jdbc:mysql://localhost:3308/pos";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "javase";
@@ -39,12 +38,35 @@ public class DatabaseAccess {
 
             // Perform database operations
             createTableIfNotExists(statement);
-            insertData(scanner, connection);
-            retrieveData(statement);
 
-            // Close resources
-            statement.close();
-            connection.close();
+            while (true) {
+                System.out.println("Choose an option:");
+                System.out.println("1. Insert item");
+                System.out.println("2. Delete item");
+                System.out.println("3. Exit");
+                System.out.print("Enter your choice: ");
+
+                int choice = scanner.nextInt();
+                scanner.nextLine(); // Consume the newline character
+
+                switch (choice) {
+                    case 1:
+                        insertData(scanner, connection);
+                        break;
+                    case 2:
+                        deleteData(scanner, connection);
+                        break;
+                    case 3:
+                        // Close resources and exit
+                        statement.close();
+                        connection.close();
+                        scanner.close();
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                        break;
+                }
+            }
 
         } catch (ClassNotFoundException e) {
             FileLogging.logError("JDBC driver not found.");
@@ -84,6 +106,7 @@ public class DatabaseAccess {
 
         System.out.print("Enter unit price: ");
         double unitPrice = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline character
 
         // Create an Item object with the entered data
         Item item = new Item(itemCode, quantity, unitPrice);
@@ -104,45 +127,29 @@ public class DatabaseAccess {
             FileLogging.logError("Error while inserting data: " + e.getMessage());
             e.printStackTrace();
         }
-
-        // alternatively,we can manually set the values of the placeholders (?) in the
-        // SQL query (insertQuery)
-        // (directly assigning the values)
-        // String insertQuery = "INSERT INTO items (item_code, quantity, unit_price)
-        // VALUES (?, ?, ?);";
-        // PreparedStatement preparedStatement =
-        // connection.prepareStatement(insertQuery);
-        // preparedStatement.setString(1, itemCode);
-        // preparedStatement.setInt(2, quantity);
-        // preparedStatement.setDouble(3, unitPrice);
-
-        // int rowsInserted = preparedStatement.executeUpdate();
-        // FileLogging.logInfo(rowsInserted + " row(s) inserted.");
-
-        // Close the PreparedStatement
-        // preparedStatement.close();
     }
 
-    private static void retrieveData(Statement statement) throws SQLException {
-        String selectQuery = "SELECT * FROM items;";
-        ResultSet resultSet = statement.executeQuery(selectQuery);
+    private static void deleteData(Scanner scanner, Connection connection) throws SQLException {
+        System.out.print("Enter item code to delete: ");
+        String itemCodeToDelete = scanner.nextLine();
 
-        while (resultSet.next()) {
-            String itemCode = resultSet.getString("item_code");
-            int quantity = resultSet.getInt("quantity");
-            double unitPrice = resultSet.getDouble("unit_price");
+        // SQL query to delete data by item code
+        String deleteQuery = "DELETE FROM items WHERE item_code = ?";
 
-            // map to object
-            // Item item = new Item(itemCode, quantity, unitPrice);
-            // System.out.println(item);
+        // PreparedStatement to execute the delete query
+        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+            preparedStatement.setString(1, itemCodeToDelete);
 
-            // here i am logging log information about each retrieved item to a log file
-            FileLogging.logInfo("Item Code: " + itemCode);
-            FileLogging.logInfo("Quantity: " + quantity);
-            FileLogging.logInfo("Unit Price: " + unitPrice);
-            FileLogging.logInfo("------------------------");
+            // Execute the delete query
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                FileLogging.logInfo("Item with code " + itemCodeToDelete + " deleted from the database.");
+            } else {
+                FileLogging.logInfo("Item with code " + itemCodeToDelete + " not found in the database.");
+            }
+        } catch (SQLException e) {
+            FileLogging.logError("Error while deleting data: " + e.getMessage());
         }
-        // Close the ResultSet
-        resultSet.close();
     }
 }

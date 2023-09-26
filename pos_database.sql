@@ -5,10 +5,10 @@ CREATE TABLE IF NOT EXISTS items (item_Code VARCHAR(255) NOT NULL,quantity INT N
 CREATE TABLE IF NOT EXISTS customers (customer_id INT AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(50) NOT NULL,last_name VARCHAR(50) NOT NULL,email VARCHAR(100),phone VARCHAR(20)
 );
 
--- Insert statements
-INSERT INTO items (item_code, quantity, unitPricr) VALUES
-    ("002A", 20, 200),
-    ("00gh1", 10, 100),
-    ("ABC123", 20, 200);
+-- Insert statement
+INSERT INTO items (item_code, quantity, unitPricr) VALUES("002A", 20, 200),("00gh1", 10, 100),("ABC123", 20, 200);
 SELECT * FROM items;
+
+--delete
+
 
