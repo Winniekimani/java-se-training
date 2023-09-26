@@ -22,9 +22,9 @@ public class DatabaseAccess {
         Scanner scanner = new Scanner(System.in);
 
         try {
-
             // Initialize logger
             FileLogging.setupLogger();
+
             // Load the MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -34,7 +34,7 @@ public class DatabaseAccess {
             // Create Statement from the connection
             Statement statement = connection.createStatement();
 
-            // Perform database ..
+            // Perform database operations
             createTableIfNotExists(statement);
             insertData(scanner, connection);
             retrieveData(statement);
@@ -65,35 +65,28 @@ public class DatabaseAccess {
     }
 
     private static void createTableIfNotExists(Statement statement) throws SQLException {
-        String createTableQuery = "CREATE TABLE IF NOT EXISTS products (" +
-                "product_id INT AUTO_INCREMENT PRIMARY KEY," +
-                "product_name VARCHAR(255) NOT NULL," +
-                "price DECIMAL(10, 2) NOT NULL," +
-                "description TEXT," +
-                "category VARCHAR(50)) ENGINE=INNODB;";
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS items (" +
+                "item_code VARCHAR(255) NOT NULL," +
+                "quantity INT NOT NULL," +
+                "unit_price DECIMAL(10, 2) NOT NULL) ENGINE=INNODB;";
         statement.executeUpdate(createTableQuery);
     }
 
     private static void insertData(Scanner scanner, Connection connection) throws SQLException {
-        System.out.print("Enter product name: ");
-        String productName = scanner.nextLine();
+        System.out.print("Enter item code: ");
+        String itemCode = scanner.nextLine();
 
-        System.out.print("Enter product price: ");
-        double price = scanner.nextDouble();
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
 
-        scanner.nextLine(); // Consume newline
-        System.out.print("Enter product description: ");
-        String description = scanner.nextLine();
+        System.out.print("Enter unit price: ");
+        double unitPrice = scanner.nextDouble();
 
-        System.out.print("Enter product category: ");
-        String category = scanner.nextLine();
-
-        String insertQuery = "INSERT INTO products (product_name, price, description, category) VALUES (?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO items (item_code, quantity, unit_price) VALUES (?, ?, ?);";
         PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-        preparedStatement.setString(1, productName);
-        preparedStatement.setDouble(2, price);
-        preparedStatement.setString(3, description);
-        preparedStatement.setString(4, category);
+        preparedStatement.setString(1, itemCode);
+        preparedStatement.setInt(2, quantity);
+        preparedStatement.setDouble(3, unitPrice);
 
         int rowsInserted = preparedStatement.executeUpdate();
         FileLogging.logInfo(rowsInserted + " row(s) inserted.");
@@ -103,21 +96,17 @@ public class DatabaseAccess {
     }
 
     private static void retrieveData(Statement statement) throws SQLException {
-        String selectQuery = "SELECT * FROM products;";
+        String selectQuery = "SELECT * FROM items;";
         ResultSet resultSet = statement.executeQuery(selectQuery);
 
         while (resultSet.next()) {
-            int productId = resultSet.getInt("product_id");
-            String productName = resultSet.getString("product_name");
-            double price = resultSet.getDouble("price");
-            String description = resultSet.getString("description");
-            String category = resultSet.getString("category");
+            String itemCode = resultSet.getString("item_code");
+            int quantity = resultSet.getInt("quantity");
+            double unitPrice = resultSet.getDouble("unit_price");
 
-            FileLogging.logInfo("Product ID: " + productId);
-            FileLogging.logInfo("Product Name: " + productName);
-            FileLogging.logInfo("Price: " + price);
-            FileLogging.logInfo("Description: " + description);
-            FileLogging.logInfo("Category: " + category);
+            FileLogging.logInfo("Item Code: " + itemCode);
+            FileLogging.logInfo("Quantity: " + quantity);
+            FileLogging.logInfo("Unit Price: " + unitPrice);
             FileLogging.logInfo("------------------------");
         }
         // Close the ResultSet

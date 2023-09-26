@@ -1,19 +1,5 @@
-2023-09-25 23:53:37 | logInfo | INFO | 1 row(s) inserted.
-2023-09-25 23:53:37 | logInfo | INFO | Product ID: 1
-2023-09-25 23:53:37 | logInfo | INFO | Product Name: Product A
-2023-09-25 23:53:37 | logInfo | INFO | Price: 19.99
-2023-09-25 23:53:37 | logInfo | INFO | Description: Description for Product A
-2023-09-25 23:53:37 | logInfo | INFO | Category: Category 1
-2023-09-25 23:53:37 | logInfo | INFO | ------------------------
-2023-09-25 23:53:37 | logInfo | INFO | Product ID: 2
-2023-09-25 23:53:37 | logInfo | INFO | Product Name: Product B
-2023-09-25 23:53:37 | logInfo | INFO | Price: 29.99
-2023-09-25 23:53:37 | logInfo | INFO | Description: Description for Product B
-2023-09-25 23:53:37 | logInfo | INFO | Category: Category 2
-2023-09-25 23:53:37 | logInfo | INFO | ------------------------
-2023-09-25 23:53:37 | logInfo | INFO | Product ID: 3
-2023-09-25 23:53:37 | logInfo | INFO | Product Name: Product C
-2023-09-25 23:53:37 | logInfo | INFO | Price: 29.99
-2023-09-25 23:53:37 | logInfo | INFO | Description: Description for Product C
-2023-09-25 23:53:37 | logInfo | INFO | Category: Category 1
-2023-09-25 23:53:37 | logInfo | INFO | ------------------------
+2023-09-26 09:27:56 | logInfo | INFO | 1 row(s) inserted.
+2023-09-26 09:27:56 | logInfo | INFO | Item Code: 002
+2023-09-26 09:27:56 | logInfo | INFO | Quantity: 20
+2023-09-26 09:27:56 | logInfo | INFO | Unit Price: 200.0
+2023-09-26 09:27:56 | logInfo | INFO | ------------------------
