@@ -9,8 +9,9 @@ CREATE TABLE IF NOT EXISTS customers (customer_id INT AUTO_INCREMENT PRIMARY KEY
 -- Insert data into the items table
 INSERT INTO items (itemCode, quantity, unitPrice) VALUES (?, ?, ?);
 INSERT INTO items (item_code, quantity, unitPricr) VALUES
-    (002, 20, 200),
-    (003, 10, 100),
-    (001, 20, 200);
+    ("002A", 20, 200),
+    ("00gh1", 10, 100),
+    ("ABC123", 20, 200);
+SELECT * FROM items;
 
 -
