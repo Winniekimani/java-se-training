@@ -10,5 +10,8 @@ INSERT INTO items (item_code, quantity, unitPricr) VALUES("002A", 20, 200),("00g
 SELECT * FROM items;
 
 --delete
+DELETE FROM items WHERE item_code = ?;
+DELETE FROM items WHERE item_code="002A";
+DELETE FROM items WHERE item_code="002";
 
 
