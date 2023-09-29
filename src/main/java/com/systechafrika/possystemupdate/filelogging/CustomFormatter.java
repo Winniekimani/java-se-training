@@ -19,7 +19,10 @@ public class CustomFormatter extends Formatter {
         String level = record.getLevel().getName();
         String message = record.getMessage();
 
-        return timestamp.format(pattern) + " | " + level + " | " + method + " | " + message + "\n";
+        return String.format("%s | %s | %s | %s\n",
+                timestamp.format(pattern), level, method, message);
+        // return timestamp.format(pattern) + " | " + level + " | " + method + " | " +
+        // message + "\n";
     }
 
 }

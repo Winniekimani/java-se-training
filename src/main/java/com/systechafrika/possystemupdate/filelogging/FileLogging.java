@@ -26,6 +26,7 @@ public class FileLogging {
     }
 
     public static void setupLogger() throws IOException {
+
         FileHandler fileHandler = new FileHandler("log.txt", true);
         CustomFormatter formatter = new CustomFormatter();
         LOGGER.addHandler(fileHandler);
