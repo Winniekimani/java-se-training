@@ -1,8 +1,12 @@
 package com.systechafrika.possystemupdate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import com.systechafrika.possystemupdate.jdbc.DatabaseAccess;
 import com.systechafrika.possystemupdate.userdefinedexceptions.EmptyCartException;
@@ -20,8 +24,17 @@ public class SystechPosSystem {
     private ArrayList<Item> cart;// a List to store items in the cart
     private DatabaseAccess databaseAccess;
 
+    private static final Logger LOGGER = Logger.getLogger(SystechPosSystem.class.getName());
+
     // Constructor
     public SystechPosSystem() {
+
+        try {
+            setupLogger();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         scanner = new Scanner(System.in);
         cart = new ArrayList<>();// creating an empty cart
         databaseAccess = new DatabaseAccess();
@@ -95,11 +108,11 @@ public class SystechPosSystem {
         boolean continueShopping = true;
         while (continueShopping) {
             displayMenu();
-            System.out.print("Choose an option: ");
+            // System.out.print("Choose an option: ");
             int option = scanner.nextInt();
             scanner.nextLine();
             try {
-                if (option < 1 || option > 5) {
+                if (option < 1 || option > 7) {
                     throw new InvalidOptionException("Invalid option. Please choose a valid option.");
                 }
             } catch (InputMismatchException e) {
@@ -142,6 +155,12 @@ public class SystechPosSystem {
                     }
                     break;
                 case 5:
+                    displayUserMenu();
+                    break;
+                case 6:
+                    displayItemMenu();
+                    break;
+                case 7:
                     // Exit the program
                     System.out.println("Exiting the program. Goodbye!");
                     System.exit(0);
@@ -167,11 +186,86 @@ public class SystechPosSystem {
         System.out.println("2:DELETE ITEM");
         System.out.println("3:MAKE PAYMENT");
         System.out.println("4:DISPLAY RECEIPT");
-        System.out.println("5:EXIT");
+        System.out.println("5:RETRIEVE USERS");
+        System.out.println("6:RETRIEVE ITEMS");
+        System.out.println("7:EXIT");
         System.out.println("*********************");
 
         System.out.print("Choose your option: ");
 
+    }
+
+    // I've added two new methods, displayUserMenu and displayItemMenu,
+    // to display submenus for retrieving user and item data, respectively.
+    public void displayUserMenu() {
+        System.out.println("User Data Retrieval Menu");
+        System.out.println("1: Retrieve Users");
+        System.out.println("2: Back to Main Menu");
+        System.out.print("Choose an option: ");
+
+        int option = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (option) {
+            case 1:
+                retrieveUsers();
+                break;
+            case 2:
+                break; // Do nothing and return to the main menu
+            default:
+                System.out.println("Invalid option. Please choose a valid option.");
+        }
+    }
+
+    public void displayItemMenu() {
+        System.out.println("Item Data Retrieval Menu");
+        System.out.println("1: Retrieve Items");
+        System.out.println("2: Back to Main Menu");
+        System.out.print("Choose an option: ");
+
+        int option = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        switch (option) {
+            case 1:
+                retrieveItems();
+                break;
+            case 2:
+                break; // Do nothing and return to the main menu
+            default:
+                System.out.println("Invalid option. Please choose a valid option.");
+        }
+    }
+
+    // i've added new methods (retrieveUsers and retrieveItems) for retrieving user
+    // and item data from the database.
+
+    public void retrieveUsers() {
+        List<User> userList = databaseAccess.retrieveUsers();// retrieves the user data from the database and returns it
+                                                             // as a list of User objects.
+        if (userList.isEmpty()) {// If the list is empty, it prints "No users found in the database." Otherwise,
+                                 // it iterates through the list and prints the user data.
+            System.out.println("No users found in the database.");//
+        } else {
+            System.out.println("User Data:");
+            for (User user : userList) {
+                System.out.println("ID: " + user.getId() + ", Username: " + user.getUsername() + ", Password: "
+                        + user.getPassword());
+            }
+        }
+    }
+
+    public void retrieveItems() {
+        List<Item> itemList = databaseAccess.retrieveItemData();
+        if (itemList.isEmpty()) {
+            System.out.println("No items found in the database.");
+        } else {
+            System.out.println("Item Data:");
+            for (Item item : itemList) {
+                System.out.println("Item Code: " + item.getItemCode() + ", Quantity: " + item.getQuantity()
+                        + ", Unit Price: " + item.getUnitPrice());
+            }
+        }
     }
 
     // allows the user to add items to the shopping
@@ -191,9 +285,15 @@ public class SystechPosSystem {
         // Create an Item object with the entered data
         Item item = new Item(itemCodeEntered, quantity, unitPrice);
         cart.add(item);
-        databaseAccess.insertItem(item);
 
+        databaseAccess.insertItem(item);
         System.out.println("Item added to cart.");
+
+        // Log item addition
+        String message = "Item added: Item Code - " + item.getItemCode() +
+                ", Quantity - " + item.getQuantity() +
+                ", Unit Price - " + item.getUnitPrice();
+        LOGGER.info(message);
     }
 
     // Delete an item from the cart by specifying the item code by using remove
@@ -212,11 +312,17 @@ public class SystechPosSystem {
                 cart.remove(item); // Remove the item from the cart using List
                 databaseAccess.deleteItem(itemCodeToDelete); // Remove the item from the database
                 System.out.println("Item removed from cart and database.");
+                String message = "Item deleted: Item Code - " + itemCodeToDelete;
+                LOGGER.info(message); // Corrected LOGGER here
                 return; // Exit the loop once the item is found and removed
             }
         }
 
         System.out.println("Item with code " + itemCodeToDelete + " not found in cart.");
+        // Log item deletion
+        String message = "Item not found  : Item Code - " + itemCodeToDelete;
+        LOGGER.info(message);
+
     }
 
     // this method here calculates the total payment based on the items in the cart
@@ -244,11 +350,15 @@ public class SystechPosSystem {
             double amountGiven = getAmountFromUser();
             double changeAmount = handlePayment(totalAmount, amountGiven);
 
-            // Create a Payment object
-            // Payment payment = new Payment(totalAmount, amountGiven, changeAmount);
             Payment payment = new Payment(totalAmount, amountGiven, changeAmount);
             // Insert payment details into the database
             databaseAccess.insertPayment(payment);
+
+            // Log user payment
+            String message = "User payment made: Total Amount - " + totalAmount +
+                    ", Amount Given - " + amountGiven +
+                    ", Change Amount - " + changeAmount;
+            LOGGER.info(message);
 
             // Return to displaying the main menu
             // displayMenu();
@@ -301,7 +411,15 @@ public class SystechPosSystem {
             System.out.println("Total: " + totalAmount);
             System.out.println("__________________");
 
+            // Log receipt display
+            LOGGER.info("Receipt displayed.");
+
         }
+    }
+
+    private void setupLogger() throws IOException {
+        FileHandler fileHandler = new FileHandler("log.txt", true);
+        LOGGER.addHandler(fileHandler);
     }
 
 }

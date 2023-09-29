@@ -1,4 +1,4 @@
-package com.systechafrika.possystemupdate.logging;
+package com.systechafrika.possystemupdate.filelogging;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -45,5 +45,4 @@ public class FileLogging {
             return pattern.format(now) + " | " + method + " | " + level + " | " + message + "\n";
         }
     }
-
 }
