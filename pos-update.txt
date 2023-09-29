@@ -1,1 +1,0 @@
-2023-09-26 21:59:14 | logInfo | INFO | Item with code 002 deleted from the database.

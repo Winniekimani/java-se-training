@@ -21,17 +21,17 @@ public class FileLogging {
         fileHandler.setFormatter(formatter);
     }
 
-    public static void logInfo(String message) {
-        LOGGER.info(message);
-    }
+    // public static void logInfo(String message) {
+    // LOGGER.info(message);
+    // }
 
-    public static void logError(String message) {
-        LOGGER.severe(message);
-    }
+    // public static void logError(String message) {
+    // LOGGER.severe(message);
+    // }
 
-    public static void logWarning(String message) {
-        LOGGER.warning(message);
-    }
+    // public static void logWarning(String message) {
+    // LOGGER.warning(message);
+    // }
 
     static class CustomFormatter extends Formatter {
         @Override

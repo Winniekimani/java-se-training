@@ -1,6 +1,5 @@
 package com.systechafrika.possystemupdate.jdbc;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +12,6 @@ import java.util.List;
 import com.systechafrika.possystemupdate.Item;
 import com.systechafrika.possystemupdate.Payment;
 import com.systechafrika.possystemupdate.User;
-import com.systechafrika.possystemupdate.filelogging.FileLogging;
 
 public class DatabaseAccess {
     private Connection connection;
@@ -23,13 +21,12 @@ public class DatabaseAccess {
 
     public DatabaseAccess() {
         try {
-            FileLogging.setupLogger();
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             createTablesIfNotExists();
-        } catch (ClassNotFoundException | SQLException | IOException e) {
+        } catch (ClassNotFoundException | SQLException e) {
 
-            FileLogging.logError("Failed to establish a database connection.");
             e.printStackTrace();
         }
     }
@@ -40,7 +37,6 @@ public class DatabaseAccess {
                 connection.close();
             }
         } catch (SQLException e) {
-            FileLogging.logError("Failed to close the database connection.");
             e.printStackTrace();
         }
     }
@@ -117,12 +113,11 @@ public class DatabaseAccess {
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            FileLogging.logInfo("User registered successfully.");
+            System.out.println("User registered successfully.");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-
-            FileLogging.logError("User registration failed.");
+            System.out.println("User registration failed.");
             return false;
         }
     }
@@ -134,19 +129,10 @@ public class DatabaseAccess {
             preparedStatement.setString(1, item.getItemCode());
             preparedStatement.setInt(2, item.getQuantity());
             preparedStatement.setDouble(3, item.getUnitPrice());
-            // preparedStatement.executeUpdate();
-
-            int rowsInserted = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
             preparedStatement.close();
-
-            // Log information about the item added
-            String logMessage = rowsInserted + " row(s) inserted.\n" +
-                    "Item Code: " + item.getItemCode() + "\n" +
-                    "Quantity: " + item.getQuantity() + "\n" +
-                    "Unit Price: " + item.getUnitPrice();
-            FileLogging.logInfo(logMessage);
         } catch (SQLException e) {
-            FileLogging.logError("Error while inserting data: " + e.getMessage());
+            System.out.println("Error while inserting data: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -156,16 +142,9 @@ public class DatabaseAccess {
             String deleteQuery = "DELETE FROM items WHERE item_code = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
             preparedStatement.setString(1, itemCode);
-            // preparedStatement.executeUpdate();
-            // Execute the insertion query
-            int rowsDeleted = preparedStatement.executeUpdate();
-            preparedStatement.close();
-
-            // Log information about the item deleted
-            String logMessage = rowsDeleted + " row(s) deleted for Item Code: " + itemCode;
-            FileLogging.logInfo(logMessage);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            FileLogging.logError("Error while deleting data: " + e.getMessage());
+            System.out.println("Error while deleting data: " + e.getMessage());
             e.printStackTrace();
         }
     }

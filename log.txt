@@ -1,157 +1,64 @@
-2023-09-26 19:25:44 | logInfo | INFO | 1 row(s) inserted.
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 002
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 20
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 200.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 002A
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 20
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 200.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 002A
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 20
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 100.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 009P
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 2
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 20.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 22
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 30
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 40.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 20
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 2
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 300.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 20
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 30
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 50.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 020
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 2
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 30.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 19:25:44 | logInfo | INFO | Item Code: 003
-2023-09-26 19:25:44 | logInfo | INFO | Quantity: 20
-2023-09-26 19:25:44 | logInfo | INFO | Unit Price: 20.0
-2023-09-26 19:25:44 | logInfo | INFO | ------------------------
-2023-09-26 21:56:08 | logInfo | INFO | 1 row(s) inserted.
-2023-09-26 21:56:08 | logInfo | INFO | Item Code: 002
-2023-09-26 21:56:08 | logInfo | INFO | Quantity: 20
-2023-09-26 21:56:08 | logInfo | INFO | Unit Price: 200.0
-2023-09-26 21:56:08 | logInfo | INFO | ------------------------
-2023-09-26 21:56:08 | logInfo | INFO | Item Code: 002A
-2023-09-26 21:56:08 | logInfo | INFO | Quantity: 20
-2023-09-26 21:56:08 | logInfo | INFO | Unit Price: 200.0
-2023-09-26 21:56:08 | logInfo | INFO | ------------------------
-2023-09-26 21:56:08 | logInfo | INFO | Item Code: 002A
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 20
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 100.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 009P
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 2
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 20.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 22
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 30
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 40.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 20
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 2
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 300.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 20
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 30
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 50.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 020
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 2
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 30.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 003
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 20
-2023-09-26 21:56:09 | logInfo | INFO | Unit Price: 20.0
-2023-09-26 21:56:09 | logInfo | INFO | ------------------------
-2023-09-26 21:56:09 | logInfo | INFO | Item Code: 002
-2023-09-26 21:56:09 | logInfo | INFO | Quantity: 20
-2023-09-26 21:56:10 | logInfo | INFO | Unit Price: 30.0
-2023-09-26 21:56:10 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | 1 row(s) inserted.
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 002A
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 20
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 200.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 002A
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 20
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 100.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 009P
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 2
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 20.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 22
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 30
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 40.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 20
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 2
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 300.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 20
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 30
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 50.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 020
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 2
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 30.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 003
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 20
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 20.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | Item Code: 10
-2023-09-28 06:04:01 | logInfo | INFO | Quantity: 20
-2023-09-28 06:04:01 | logInfo | INFO | Unit Price: 34.0
-2023-09-28 06:04:01 | logInfo | INFO | ------------------------
-2023-09-28 06:04:01 | logInfo | INFO | 1 row(s) inserted for default admin.
-2023-09-28 06:11:16 | logInfo | INFO | 1 row(s) inserted.
-2023-09-28 06:11:16 | logInfo | INFO | Item Code: 002A
-2023-09-28 06:11:16 | logInfo | INFO | Quantity: 20
-2023-09-28 06:11:16 | logInfo | INFO | Unit Price: 200.0
-2023-09-28 06:11:16 | logInfo | INFO | ------------------------
-2023-09-28 06:11:16 | logInfo | INFO | Item Code: 002A
-2023-09-28 06:11:16 | logInfo | INFO | Quantity: 20
-2023-09-28 06:11:16 | logInfo | INFO | Unit Price: 100.0
-2023-09-28 06:11:16 | logInfo | INFO | ------------------------
-2023-09-28 06:11:16 | logInfo | INFO | Item Code: 009P
-2023-09-28 06:11:16 | logInfo | INFO | Quantity: 2
-2023-09-28 06:11:16 | logInfo | INFO | Unit Price: 20.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 22
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 30
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 40.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 20
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 2
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 300.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 20
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 30
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 50.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 020
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 2
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 30.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 003
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 20
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 20.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 10
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 20
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 34.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
-2023-09-28 06:11:17 | logInfo | INFO | Item Code: 20
-2023-09-28 06:11:17 | logInfo | INFO | Quantity: 20
-2023-09-28 06:11:17 | logInfo | INFO | Unit Price: 120.0
-2023-09-28 06:11:17 | logInfo | INFO | ------------------------
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-09-29T16:53:06.297810800Z</date>
+  <millis>1696006386297</millis>
+  <nanos>810800</nanos>
+  <sequence>0</sequence>
+  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
+  <level>INFO</level>
+  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
+  <method>login</method>
+  <thread>1</thread>
+  <message>Successful login!</message>
+</record>
+<record>
+  <date>2023-09-29T16:53:23.605308400Z</date>
+  <millis>1696006403605</millis>
+  <nanos>308400</nanos>
+  <sequence>1</sequence>
+  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
+  <level>INFO</level>
+  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
+  <method>addItem</method>
+  <thread>1</thread>
+  <message>Item added: Item Code - 4040, Quantity - 10, Unit Price - 10.0</message>
+</record>
+<record>
+  <date>2023-09-29T16:53:37.949524900Z</date>
+  <millis>1696006417949</millis>
+  <nanos>524900</nanos>
+  <sequence>2</sequence>
+  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
+  <level>INFO</level>
+  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
+  <method>makePayment</method>
+  <thread>1</thread>
+  <message>User payment made: Total Amount - 100.0, Amount Given - 200.0, Change Amount - 100.0</message>
+</record>
+<record>
+  <date>2023-09-29T16:53:52.894549700Z</date>
+  <millis>1696006432894</millis>
+  <nanos>549700</nanos>
+  <sequence>3</sequence>
+  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
+  <level>INFO</level>
+  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
+  <method>displayReceipt</method>
+  <thread>1</thread>
+  <message>displayReceipt method called.</message>
+</record>
+<record>
+  <date>2023-09-29T16:53:52.904329500Z</date>
+  <millis>1696006432904</millis>
+  <nanos>329500</nanos>
+  <sequence>4</sequence>
+  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
+  <level>INFO</level>
+  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
+  <method>displayReceipt</method>
+  <thread>1</thread>
+  <message>Receipt displayed.</message>
+</record>
+</log>

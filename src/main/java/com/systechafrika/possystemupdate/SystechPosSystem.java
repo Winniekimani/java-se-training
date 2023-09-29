@@ -34,7 +34,6 @@ public class SystechPosSystem {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         scanner = new Scanner(System.in);
         cart = new ArrayList<>();// creating an empty cart
         databaseAccess = new DatabaseAccess();
@@ -66,28 +65,28 @@ public class SystechPosSystem {
             if (databaseAccess.userExists(enteredUsername)) {
                 String storedPassword = databaseAccess.getPassword(enteredUsername);
                 if (enteredPassword.equals(storedPassword) || enteredPassword.equals(DEFAULT_PASSWORD)) {
-                    System.out.println("Successful login!");
+                    LOGGER.info("Successful login!");
                     break;
                 } else {
                     loginAttempts++;
-                    System.out.println("Incorrect password. Attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                    LOGGER.info("Incorrect password. Attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
                 }
             } else {
-                System.out.println("User not found.");
-                System.out.print("Register as a new user (yes/no): ");
+                LOGGER.info("User not found.");
+                LOGGER.info("Register as a new user (yes/no): ");
                 String registerChoice = scanner.nextLine().toLowerCase();
                 if (registerChoice.equals("yes")) {
                     if (databaseAccess.registerUser(enteredUsername, DEFAULT_PASSWORD)) {
-                        System.out.println("User registered and logged in!");
+                        LOGGER.info("User registered and logged in!");
                         break;
                     } else {
-                        System.out.println("User registration failed.");
+                        LOGGER.info("User registration failed.");
                         loginAttempts++;
-                        System.out.println("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                        LOGGER.info("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
                     }
                 } else {
                     loginAttempts++;
-                    System.out.println("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                    LOGGER.info("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
                 }
             }
 
@@ -95,7 +94,7 @@ public class SystechPosSystem {
                 try {
                     throw new MaxLoginAttemptsExceededException("Maximum login attempts exceeded. Exiting.");
                 } catch (MaxLoginAttemptsExceededException e) {
-                    System.out.println(e.getMessage());
+                    LOGGER.info(e.getMessage());
                     e.printStackTrace();
                     System.exit(1);
                 }
@@ -143,7 +142,7 @@ public class SystechPosSystem {
                     try {
                         makePayment();
                     } catch (EmptyCartException | InsufficientPaymentException e) {
-                        System.out.println(e.getMessage());
+                        LOGGER.info(e.getMessage());
                     }
                     break;
                 case 4:
@@ -151,7 +150,7 @@ public class SystechPosSystem {
                     try {
                         displayReceipt();
                     } catch (ReceiptPrintingException e) {
-                        System.out.println(e.getMessage());
+                        LOGGER.info(e.getMessage());
                     }
                     break;
                 case 5:
@@ -167,7 +166,7 @@ public class SystechPosSystem {
                     break;
 
                 default:
-                    System.out.println("Invalid option. Please choose a valid option.");
+                    LOGGER.info("Invalid option. Please choose a valid option.");
                     continueShopping = false; // here we Set the boolean to false to exit the loop
                     break;
             }
@@ -213,7 +212,7 @@ public class SystechPosSystem {
             case 2:
                 break; // Do nothing and return to the main menu
             default:
-                System.out.println("Invalid option. Please choose a valid option.");
+                LOGGER.info("Invalid option. Please choose a valid option.");
         }
     }
 
@@ -233,7 +232,7 @@ public class SystechPosSystem {
             case 2:
                 break; // Do nothing and return to the main menu
             default:
-                System.out.println("Invalid option. Please choose a valid option.");
+                LOGGER.info("Invalid option. Please choose a valid option.");
         }
     }
 
@@ -245,11 +244,11 @@ public class SystechPosSystem {
                                                              // as a list of User objects.
         if (userList.isEmpty()) {// If the list is empty, it prints "No users found in the database." Otherwise,
                                  // it iterates through the list and prints the user data.
-            System.out.println("No users found in the database.");//
+            LOGGER.info("No users found in the database.");//
         } else {
             System.out.println("User Data:");
             for (User user : userList) {
-                System.out.println("ID: " + user.getId() + ", Username: " + user.getUsername() + ", Password: "
+                LOGGER.info("ID: " + user.getId() + ", Username: " + user.getUsername() + ", Password: "
                         + user.getPassword());
             }
         }
@@ -258,11 +257,11 @@ public class SystechPosSystem {
     public void retrieveItems() {
         List<Item> itemList = databaseAccess.retrieveItemData();
         if (itemList.isEmpty()) {
-            System.out.println("No items found in the database.");
+            LOGGER.info("No items found in the database.");
         } else {
             System.out.println("Item Data:");
             for (Item item : itemList) {
-                System.out.println("Item Code: " + item.getItemCode() + ", Quantity: " + item.getQuantity()
+                LOGGER.info("Item Code: " + item.getItemCode() + ", Quantity: " + item.getQuantity()
                         + ", Unit Price: " + item.getUnitPrice());
             }
         }
@@ -299,6 +298,8 @@ public class SystechPosSystem {
     // Delete an item from the cart by specifying the item code by using remove
     // method from list
     public void deleteItem() {
+
+        LOGGER.info("deleteItem method called.");
         if (cart.isEmpty()) {
             System.out.println("Cart is empty. Add items before attempting to delete.");
             return;
@@ -391,6 +392,7 @@ public class SystechPosSystem {
     // their quantities, unit prices, and total values.
     public void displayReceipt() throws ReceiptPrintingException {
 
+        LOGGER.info("displayReceipt method called.");
         if (cart.isEmpty()) {
             throw new ReceiptPrintingException("No items in the cart. Add items before displaying the receipt");
         } else {
