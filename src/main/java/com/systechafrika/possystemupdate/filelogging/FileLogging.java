@@ -1,24 +1,43 @@
 package com.systechafrika.possystemupdate.filelogging;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class FileLogging {
 
     private static final Logger LOGGER = Logger.getLogger(FileLogging.class.getName());
 
+    public static void main(String[] args) {
+        try {
+            setupLogger(); // Calling setupLogger()
+            LOGGER.info("Info message logging\n");
+            LOGGER.severe("Error message logging\n");
+            LOGGER.warning("Warning message logging\n");
+            test();
+        } catch (SecurityException e) {
+            LOGGER.info("Security permission exception " + e.getMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            LOGGER.info("I/O permission exception " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
     public static void setupLogger() throws IOException {
-        FileHandler fileHandler = new FileHandler("log.txt");
+        FileHandler fileHandler = new FileHandler("log.txt", true);
         CustomFormatter formatter = new CustomFormatter();
         LOGGER.addHandler(fileHandler);
         fileHandler.setFormatter(formatter);
+        // fileHandler.setFlushOnPublish(true); // Add this line to enable immediate
+        // flushing
+    }
+
+    public static void test() {
+        LOGGER.info("Info message logging test\n");
+        LOGGER.severe("Error message logging test\n");
+        LOGGER.warning("Warning message logging test\n");
     }
 
     // public static void logInfo(String message) {
@@ -33,16 +52,4 @@ public class FileLogging {
     // LOGGER.warning(message);
     // }
 
-    static class CustomFormatter extends Formatter {
-        @Override
-        public String format(LogRecord record) {
-            DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String method = record.getSourceMethodName();
-            String level = record.getLevel().getName();
-            String message = record.getMessage();
-            Instant instant = record.getInstant();
-            LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-            return pattern.format(now) + " | " + method + " | " + level + " | " + message + "\n";
-        }
-    }
 }
