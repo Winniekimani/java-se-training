@@ -1,4 +1,4 @@
-package com.systechafrika.pos.customexceptions;
+package com.systechafrika.possystemupdate.userdefinedexceptions;
 
 public class InsufficientPaymentException extends Exception {
     public InsufficientPaymentException(String message) {

@@ -1,4 +1,4 @@
-package com.systechafrika.poswithinsertanddeletedata.customexceptions;
+package com.systechafrika.possystemupdate.userdefinedexceptions;
 
 public class EmptyCartException extends Exception {
     public EmptyCartException(String message) {

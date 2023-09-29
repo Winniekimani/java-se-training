@@ -1,4 +1,4 @@
-package com.systechafrika.pos.customexceptions;
+package com.systechafrika.possystemupdate.userdefinedexceptions;
 
 public class MaxLoginAttemptsExceededException extends Exception {
     public MaxLoginAttemptsExceededException(String message) {

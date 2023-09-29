@@ -1,14 +1,15 @@
-package com.systechafrika.pos;
+package com.systechafrika.possystemupdate;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.systechafrika.pos.customexceptions.EmptyCartException;
-import com.systechafrika.pos.customexceptions.InsufficientPaymentException;
-import com.systechafrika.pos.customexceptions.InvalidOptionException;
-import com.systechafrika.pos.customexceptions.MaxLoginAttemptsExceededException;
-import com.systechafrika.pos.customexceptions.ReceiptPrintingException;
+import com.systechafrika.possystemupdate.jdbc.DatabaseAccess;
+import com.systechafrika.possystemupdate.userdefinedexceptions.EmptyCartException;
+import com.systechafrika.possystemupdate.userdefinedexceptions.InsufficientPaymentException;
+import com.systechafrika.possystemupdate.userdefinedexceptions.InvalidOptionException;
+import com.systechafrika.possystemupdate.userdefinedexceptions.MaxLoginAttemptsExceededException;
+import com.systechafrika.possystemupdate.userdefinedexceptions.ReceiptPrintingException;
 
 public class SystechPosSystem {
 
@@ -16,19 +17,26 @@ public class SystechPosSystem {
     final int MAX_LOGIN_ATTEMPTS = 3;
 
     private Scanner scanner;
-    private ArrayList<Item> cart;
+    private ArrayList<Item> cart;// a List to store items in the cart
+    private DatabaseAccess databaseAccess;
 
     // Constructor
     public SystechPosSystem() {
         scanner = new Scanner(System.in);
         cart = new ArrayList<>();// creating an empty cart
+        databaseAccess = new DatabaseAccess();
     }
 
     public static void main(String[] args) {
 
         SystechPosSystem a = new SystechPosSystem();
         a.login();
+        a.closeDatabaseConnection();
 
+    }
+
+    public void closeDatabaseConnection() {
+        databaseAccess.closeConnection();
     }
 
     // handles user login
@@ -36,15 +44,38 @@ public class SystechPosSystem {
         int loginAttempts = 0;
 
         while (loginAttempts < MAX_LOGIN_ATTEMPTS) {
+            System.out.print("Enter username: ");
+            String enteredUsername = scanner.nextLine();
             System.out.print("Enter password to log in: ");
             String enteredPassword = scanner.nextLine();
 
-            if (enteredPassword.equals(DEFAULT_PASSWORD)) {
-                System.out.println("Successful login!");
-                break;
+            // Check if the user exists
+            if (databaseAccess.userExists(enteredUsername)) {
+                String storedPassword = databaseAccess.getPassword(enteredUsername);
+                if (enteredPassword.equals(storedPassword) || enteredPassword.equals(DEFAULT_PASSWORD)) {
+                    System.out.println("Successful login!");
+                    break;
+                } else {
+                    loginAttempts++;
+                    System.out.println("Incorrect password. Attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                }
             } else {
-                loginAttempts++;
-                System.out.println("Incorrect password. Attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                System.out.println("User not found.");
+                System.out.print("Register as a new user (yes/no): ");
+                String registerChoice = scanner.nextLine().toLowerCase();
+                if (registerChoice.equals("yes")) {
+                    if (databaseAccess.registerUser(enteredUsername, DEFAULT_PASSWORD)) {
+                        System.out.println("User registered and logged in!");
+                        break;
+                    } else {
+                        System.out.println("User registration failed.");
+                        loginAttempts++;
+                        System.out.println("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                    }
+                } else {
+                    loginAttempts++;
+                    System.out.println("Login attempts left: " + (MAX_LOGIN_ATTEMPTS - loginAttempts));
+                }
             }
 
             if (loginAttempts == MAX_LOGIN_ATTEMPTS) {
@@ -68,7 +99,7 @@ public class SystechPosSystem {
             int option = scanner.nextInt();
             scanner.nextLine();
             try {
-                if (option < 1 || option > 4) {
+                if (option < 1 || option > 5) {
                     throw new InvalidOptionException("Invalid option. Please choose a valid option.");
                 }
             } catch (InputMismatchException e) {
@@ -89,7 +120,12 @@ public class SystechPosSystem {
                     // Add items
                     addItem();
                     break;
+
                 case 2:
+                    // remove items
+                    deleteItem();
+                    break;
+                case 3:
                     // Make payment
                     try {
                         makePayment();
@@ -97,7 +133,7 @@ public class SystechPosSystem {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 3:
+                case 4:
                     // Display receipt
                     try {
                         displayReceipt();
@@ -105,11 +141,12 @@ public class SystechPosSystem {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 4:
+                case 5:
                     // Exit the program
                     System.out.println("Exiting the program. Goodbye!");
                     System.exit(0);
                     break;
+
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
                     continueShopping = false; // here we Set the boolean to false to exit the loop
@@ -127,9 +164,10 @@ public class SystechPosSystem {
         System.out.println("*********************");
         System.out.println("_______________________\n");
         System.out.println("1:ADD ITEM");
-        System.out.println("2:MAKE PAYMENT");
-        System.out.println("3: DISPLAY RECEIPT");
-        System.out.println("4: EXIT");
+        System.out.println("2:DELETE ITEM");
+        System.out.println("3:MAKE PAYMENT");
+        System.out.println("4:DISPLAY RECEIPT");
+        System.out.println("5:EXIT");
         System.out.println("*********************");
 
         System.out.print("Choose your option: ");
@@ -150,12 +188,35 @@ public class SystechPosSystem {
         double unitPrice = scanner.nextDouble();
         scanner.nextLine();
 
-        // this code takes user input for an item's code, quantity, and
-        // unit price, creates an Item object with this information,and
-        // adds it to the shopping cart
-        Item items = new Item(itemCodeEntered, quantity, unitPrice);
-        cart.add(items);
+        // Create an Item object with the entered data
+        Item item = new Item(itemCodeEntered, quantity, unitPrice);
+        cart.add(item);
+        databaseAccess.insertItem(item);
+
         System.out.println("Item added to cart.");
+    }
+
+    // Delete an item from the cart by specifying the item code by using remove
+    // method from list
+    public void deleteItem() {
+        if (cart.isEmpty()) {
+            System.out.println("Cart is empty. Add items before attempting to delete.");
+            return;
+        }
+        System.out.print("Enter Item Code to delete: ");
+        String itemCodeToDelete = scanner.nextLine();
+
+        // Search for the item in the cart using its item code
+        for (Item item : cart) {
+            if (item.getItemCode().equalsIgnoreCase(itemCodeToDelete)) {
+                cart.remove(item); // Remove the item from the cart using List
+                databaseAccess.deleteItem(itemCodeToDelete); // Remove the item from the database
+                System.out.println("Item removed from cart and database.");
+                return; // Exit the loop once the item is found and removed
+            }
+        }
+
+        System.out.println("Item with code " + itemCodeToDelete + " not found in cart.");
     }
 
     // this method here calculates the total payment based on the items in the cart
@@ -181,8 +242,13 @@ public class SystechPosSystem {
             System.out.println("Total: " + totalAmount);
 
             double amountGiven = getAmountFromUser();
+            double changeAmount = handlePayment(totalAmount, amountGiven);
 
-            handlePayment(totalAmount, amountGiven);
+            // Create a Payment object
+            // Payment payment = new Payment(totalAmount, amountGiven, changeAmount);
+            Payment payment = new Payment(totalAmount, amountGiven, changeAmount);
+            // Insert payment details into the database
+            databaseAccess.insertPayment(payment);
 
             // Return to displaying the main menu
             // displayMenu();
@@ -199,15 +265,15 @@ public class SystechPosSystem {
         return amountGiven;
     }
 
-    // Helper method to handle payment logic
-    private void handlePayment(double totalAmount, double amountGiven) throws InsufficientPaymentException {
+    private double handlePayment(double totalAmount, double amountGiven) throws InsufficientPaymentException {
         if (amountGiven < totalAmount) {
             throw new InsufficientPaymentException("Less amount given. Please try a higher amount.");
         } else {
             // Calculate and display the change
-            double change = amountGiven - totalAmount;
-            System.out.println("Change: " + change);
+            double changeAmount = amountGiven - totalAmount;
+            System.out.println("Change: " + changeAmount);
             System.out.println("THANK YOU FOR SHOPPING WITH US");
+            return changeAmount; // Return the change value
         }
     }
 

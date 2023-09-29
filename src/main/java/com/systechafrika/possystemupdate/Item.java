@@ -1,4 +1,4 @@
-package com.systechafrika.pos;
+package com.systechafrika.possystemupdate;
 
 public class Item {
     // properties

@@ -1,4 +1,4 @@
-package com.systechafrika.poswithinsertanddeletedata.customexceptions;
+package com.systechafrika.possystemupdate.userdefinedexceptions;
 
 public class InvalidOptionException extends Exception {
     public InvalidOptionException(String message) {
