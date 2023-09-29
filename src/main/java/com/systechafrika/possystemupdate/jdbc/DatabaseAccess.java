@@ -138,6 +138,7 @@ public class DatabaseAccess {
 
             // Execute the insertion query
             int rowsInserted = preparedStatement.executeUpdate();
+
             FileLogging.logInfo(rowsInserted + " row(s) inserted.");
             preparedStatement.close();
         } catch (SQLException e) {

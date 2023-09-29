@@ -15,7 +15,7 @@ public class FileLogging {
     private static final Logger LOGGER = Logger.getLogger(FileLogging.class.getName());
 
     public static void setupLogger() throws IOException {
-        FileHandler fileHandler = new FileHandler("log.txt", true);
+        FileHandler fileHandler = new FileHandler("log.txt");
         CustomFormatter formatter = new CustomFormatter();
         LOGGER.addHandler(fileHandler);
         fileHandler.setFormatter(formatter);
