@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
+import com.systechafrika.possystemupdate.filelogging.CustomFormatter;
 import com.systechafrika.possystemupdate.jdbc.DatabaseAccess;
 import com.systechafrika.possystemupdate.userdefinedexceptions.EmptyCartException;
 import com.systechafrika.possystemupdate.userdefinedexceptions.InsufficientPaymentException;
@@ -37,6 +38,13 @@ public class SystechPosSystem {
         scanner = new Scanner(System.in);
         cart = new ArrayList<>();// creating an empty cart
         databaseAccess = new DatabaseAccess();
+    }
+
+    private void setupLogger() throws SecurityException, IOException {
+        FileHandler fileHandler = new FileHandler("log.txt", true);
+        CustomFormatter formatter = new CustomFormatter();
+        LOGGER.addHandler(fileHandler);
+        fileHandler.setFormatter(formatter);
     }
 
     public static void main(String[] args) {
@@ -417,11 +425,6 @@ public class SystechPosSystem {
             LOGGER.info("Receipt displayed.");
 
         }
-    }
-
-    private void setupLogger() throws IOException {
-        FileHandler fileHandler = new FileHandler("log.txt", true);
-        LOGGER.addHandler(fileHandler);
     }
 
 }

@@ -8,7 +8,7 @@ public class FileLogging {
 
     private static final Logger LOGGER = Logger.getLogger(FileLogging.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SecurityException, IOException {
         try {
             setupLogger(); // Calling setupLogger()
             LOGGER.info("Info message logging\n");

@@ -1,64 +1,7 @@
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2023-09-29T20:13:04.997609400Z</date>
-  <millis>1696018384997</millis>
-  <nanos>609400</nanos>
-  <sequence>0</sequence>
-  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
-  <level>INFO</level>
-  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
-  <method>login</method>
-  <thread>1</thread>
-  <message>Successful login!</message>
-</record>
-<record>
-  <date>2023-09-29T20:13:13.102321400Z</date>
-  <millis>1696018393102</millis>
-  <nanos>321400</nanos>
-  <sequence>1</sequence>
-  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
-  <level>INFO</level>
-  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
-  <method>addItem</method>
-  <thread>1</thread>
-  <message>Item added: Item Code - 30, Quantity - 30, Unit Price - 30.0</message>
-</record>
-<record>
-  <date>2023-09-29T20:13:29.003080300Z</date>
-  <millis>1696018409003</millis>
-  <nanos>80300</nanos>
-  <sequence>2</sequence>
-  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
-  <level>INFO</level>
-  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
-  <method>makePayment</method>
-  <thread>1</thread>
-  <message>User payment made: Total Amount - 900.0, Amount Given - 1000.0, Change Amount - 100.0</message>
-</record>
-<record>
-  <date>2023-09-29T20:13:31.979786400Z</date>
-  <millis>1696018411979</millis>
-  <nanos>786400</nanos>
-  <sequence>3</sequence>
-  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
-  <level>INFO</level>
-  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
-  <method>displayReceipt</method>
-  <thread>1</thread>
-  <message>displayReceipt method called.</message>
-</record>
-<record>
-  <date>2023-09-29T20:13:31.985640900Z</date>
-  <millis>1696018411985</millis>
-  <nanos>640900</nanos>
-  <sequence>4</sequence>
-  <logger>com.systechafrika.possystemupdate.SystechPosSystem</logger>
-  <level>INFO</level>
-  <class>com.systechafrika.possystemupdate.SystechPosSystem</class>
-  <method>displayReceipt</method>
-  <thread>1</thread>
-  <message>Receipt displayed.</message>
-</record>
-</log>
+2023-09-30 13:06:22 | INFO | login | Successful login!2023-09-30 13:06:30 | INFO | addItem | Item added: Item Code - 000, Quantity - 20, Unit Price - 20.02023-09-30 13:06:36 | INFO | makePayment | User payment made: Total Amount - 400.0, Amount Given - 1000.0, Change Amount - 600.02023-09-30 13:06:41 | INFO | displayReceipt | displayReceipt method called.2023-09-30 13:06:41 | INFO | displayReceipt | Receipt displayed.2023-09-30 13:10:03 | INFO | login | Successful login!
+2023-09-30 13:10:15 | INFO | addItem | Item added: Item Code - 2020, Quantity - 20, Unit Price - 100.0
+2023-09-30 13:10:22 | INFO | deleteItem | deleteItem method called.
+2023-09-30 13:10:26 | INFO | deleteItem | Item not found  : Item Code - 3
+2023-09-30 13:10:43 | INFO | makePayment | User payment made: Total Amount - 2000.0, Amount Given - 2500.0, Change Amount - 500.0
+2023-09-30 13:10:47 | INFO | displayReceipt | displayReceipt method called.
+2023-09-30 13:10:47 | INFO | displayReceipt | Receipt displayed.

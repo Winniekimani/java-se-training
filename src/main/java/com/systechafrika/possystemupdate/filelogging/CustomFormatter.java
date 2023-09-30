@@ -9,20 +9,15 @@ import java.util.logging.LogRecord;
 
 public class CustomFormatter extends Formatter {
 
-    DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     @Override
     public String format(LogRecord record) {
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String method = record.getSourceMethodName();
-        LocalDateTime timestamp = LocalDateTime.now();
-        String source = record.getSourceClassName() + " | " + record.getSourceMethodName();
         String level = record.getLevel().getName();
         String message = record.getMessage();
-
-        return String.format("%s | %s | %s | %s\n",
-                timestamp.format(pattern), level, method, message);
-        // return timestamp.format(pattern) + " | " + level + " | " + method + " | " +
-        // message + "\n";
+        Instant instant = record.getInstant();
+        LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        return pattern.format(now) + " | " + level + " | " + method + " | " + message + "\n";
     }
 
 }
