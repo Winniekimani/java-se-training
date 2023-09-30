@@ -101,19 +101,20 @@ public class DatabaseAccess {
         return null;
     }
 
-    public boolean registerUser(String username, String password) {
+    public boolean registerUser(String username) {
         try {
             if (userExists(username)) {
                 System.out.println("User already exists.");
                 return false;
             }
+            String password = "Admin123"; // Set the password to "Admin123"
             String insertQuery = "INSERT INTO users (username, password) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            System.out.println("User registered successfully.");
+            System.out.println("User registered successfully with password: " + password);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

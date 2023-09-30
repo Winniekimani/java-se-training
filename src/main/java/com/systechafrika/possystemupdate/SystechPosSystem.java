@@ -84,7 +84,7 @@ public class SystechPosSystem {
                 LOGGER.info("Register as a new user (yes/no): ");
                 String registerChoice = scanner.nextLine().toLowerCase();
                 if (registerChoice.equals("yes")) {
-                    if (databaseAccess.registerUser(enteredUsername, DEFAULT_PASSWORD)) {
+                    if (databaseAccess.registerUser(enteredUsername)) {
                         LOGGER.info("User registered and logged in!");
                         break;
                     } else {

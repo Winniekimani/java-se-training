@@ -10,3 +10,17 @@
 2023-09-30 13:37:03 | INFO | displayReceipt | displayReceipt method called.
 2023-09-30 13:37:03 | INFO | displayReceipt | Receipt displayed.
 2023-09-30 13:37:14 | INFO | displayUserMenu | Invalid option. Please choose a valid option.
+2023-09-30 13:43:55 | INFO | login | Successful login!
+2023-09-30 13:44:36 | INFO | login | User not found.
+2023-09-30 13:44:36 | INFO | login | Register as a new user (yes/no): 
+2023-09-30 13:44:49 | INFO | login | Login attempts left: 2
+2023-09-30 13:45:05 | INFO | login | User not found.
+2023-09-30 13:45:05 | INFO | login | Register as a new user (yes/no): 
+2023-09-30 13:45:10 | INFO | login | User registered and logged in!
+2023-09-30 13:55:30 | INFO | login | User not found.
+2023-09-30 13:55:31 | INFO | login | Register as a new user (yes/no): 
+2023-09-30 13:55:35 | INFO | login | User registered and logged in!
+2023-09-30 13:56:00 | INFO | addItem | Item added: Item Code - 6464, Quantity - 60, Unit Price - 6.0
+2023-09-30 13:56:07 | INFO | makePayment | User payment made: Total Amount - 360.0, Amount Given - 400.0, Change Amount - 40.0
+2023-09-30 13:56:13 | INFO | displayReceipt | displayReceipt method called.
+2023-09-30 13:56:13 | INFO | displayReceipt | Receipt displayed.
