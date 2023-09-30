@@ -185,20 +185,22 @@ public class SystechPosSystem {
     }
 
     public static void displayMenu() {
-        System.out.println("*********************");
-        System.out.println("SYSTECH POS SYSTEM");
-        System.out.println("*********************");
-        System.out.println("_______________________\n");
-        System.out.println("1:ADD ITEM");
-        System.out.println("2:DELETE ITEM");
-        System.out.println("3:MAKE PAYMENT");
-        System.out.println("4:DISPLAY RECEIPT");
-        System.out.println("5:RETRIEVE USERS");
-        System.out.println("6:RETRIEVE ITEMS");
-        System.out.println("7:EXIT");
-        System.out.println("*********************");
+        StringBuilder menu = new StringBuilder();
+        menu.append("*********************\n");
+        menu.append("SYSTECH POS SYSTEM\n");
+        menu.append("*********************\n");
+        menu.append("_______________________\n");
+        menu.append("1: ADD ITEM\n");
+        menu.append("2: DELETE ITEM\n");
+        menu.append("3: MAKE PAYMENT\n");
+        menu.append("4: DISPLAY RECEIPT\n");
+        menu.append("5: RETRIEVE USERS\n");
+        menu.append("6: RETRIEVE ITEMS\n");
+        menu.append("7: EXIT\n");
+        menu.append("*********************\n");
+        menu.append("Choose your option: ");
 
-        System.out.print("Choose your option: ");
+        System.out.print(menu.toString());
 
     }
 
