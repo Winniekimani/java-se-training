@@ -1,26 +1,84 @@
-2023-09-30 13:06:22 | INFO | login | Successful login!2023-09-30 13:06:30 | INFO | addItem | Item added: Item Code - 000, Quantity - 20, Unit Price - 20.02023-09-30 13:06:36 | INFO | makePayment | User payment made: Total Amount - 400.0, Amount Given - 1000.0, Change Amount - 600.02023-09-30 13:06:41 | INFO | displayReceipt | displayReceipt method called.2023-09-30 13:06:41 | INFO | displayReceipt | Receipt displayed.2023-09-30 13:10:03 | INFO | login | Successful login!
-2023-09-30 13:10:15 | INFO | addItem | Item added: Item Code - 2020, Quantity - 20, Unit Price - 100.0
-2023-09-30 13:10:22 | INFO | deleteItem | deleteItem method called.
-2023-09-30 13:10:26 | INFO | deleteItem | Item not found  : Item Code - 3
-2023-09-30 13:10:43 | INFO | makePayment | User payment made: Total Amount - 2000.0, Amount Given - 2500.0, Change Amount - 500.0
-2023-09-30 13:10:47 | INFO | displayReceipt | displayReceipt method called.
-2023-09-30 13:10:47 | INFO | displayReceipt | Receipt displayed.
-2023-09-30 13:36:42 | INFO | login | Successful login!
-2023-09-30 13:36:57 | INFO | addItem | Item added: Item Code - 2021, Quantity - 21, Unit Price - 20.0
-2023-09-30 13:37:03 | INFO | displayReceipt | displayReceipt method called.
-2023-09-30 13:37:03 | INFO | displayReceipt | Receipt displayed.
-2023-09-30 13:37:14 | INFO | displayUserMenu | Invalid option. Please choose a valid option.
-2023-09-30 13:43:55 | INFO | login | Successful login!
-2023-09-30 13:44:36 | INFO | login | User not found.
-2023-09-30 13:44:36 | INFO | login | Register as a new user (yes/no): 
-2023-09-30 13:44:49 | INFO | login | Login attempts left: 2
-2023-09-30 13:45:05 | INFO | login | User not found.
-2023-09-30 13:45:05 | INFO | login | Register as a new user (yes/no): 
-2023-09-30 13:45:10 | INFO | login | User registered and logged in!
-2023-09-30 13:55:30 | INFO | login | User not found.
-2023-09-30 13:55:31 | INFO | login | Register as a new user (yes/no): 
-2023-09-30 13:55:35 | INFO | login | User registered and logged in!
-2023-09-30 13:56:00 | INFO | addItem | Item added: Item Code - 6464, Quantity - 60, Unit Price - 6.0
-2023-09-30 13:56:07 | INFO | makePayment | User payment made: Total Amount - 360.0, Amount Given - 400.0, Change Amount - 40.0
-2023-09-30 13:56:13 | INFO | displayReceipt | displayReceipt method called.
-2023-09-30 13:56:13 | INFO | displayReceipt | Receipt displayed.
+2023-09-30 14:13:55 | INFO | login | Successful login!
+2023-09-30 14:14:15 | INFO | addItem | Item added: Item Code - 3030, Quantity - 30, Unit Price - 10.0
+2023-09-30 14:14:22 | INFO | makePayment | User payment made: Total Amount - 300.0, Amount Given - 500.0, Change Amount - 200.0
+2023-09-30 14:14:27 | INFO | displayReceipt | displayReceipt method called.
+2023-09-30 14:14:27 | INFO | displayReceipt | Receipt displayed.
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 1, Username: , Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 2, Username: wnnie, Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 3, Username: winnie, Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 4, Username: wanjiru, Password: 23
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 5, Username: Admin, Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 6, Username: njeri, Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 7, Username: rebecca, Password: Admin123
+2023-09-30 14:14:38 | INFO | retrieveUsers | ID: 8, Username: Wanjiku, Password: Admin123
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 002A, Quantity: 20, Unit Price: 200.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 002A, Quantity: 20, Unit Price: 100.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 009P, Quantity: 2, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 22, Quantity: 30, Unit Price: 40.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 2, Unit Price: 300.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 30, Unit Price: 50.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 020, Quantity: 2, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 003, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 10, Quantity: 20, Unit Price: 34.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 20, Unit Price: 120.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 120, Quantity: 30, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 123, Quantity: 20, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 123, Quantity: 30, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 12, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 234, Quantity: 40, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 12, Quantity: 45, Unit Price: 70.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 22, Quantity: 56, Unit Price: 35.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 23, Quantity: 56, Unit Price: 78.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 123, Quantity: 40, Unit Price: 50.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 230, Quantity: 30, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 400, Quantity: 400, Unit Price: 400.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 500, Quantity: 500, Unit Price: 500.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 600, Quantity: 600, Unit Price: 10.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 900, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 900, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 900, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 900, Quantity: 9, Unit Price: 90.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 200, Quantity: 2, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 25, Quantity: 25, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 100, Quantity: 1, Unit Price: 100.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 90, Quantity: 10, Unit Price: 10.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 440, Quantity: 4, Unit Price: 10.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 64, Quantity: 1, Unit Price: 64.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 409, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 30, Unit Price: 4.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 20, Quantity: 30, Unit Price: 30.0
+2023-09-30 14:14:49 | INFO | retrieveItems | Item Code: 450, Quantity: 5, Unit Price: 5.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 450, Quantity: 5, Unit Price: 5.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 20, Quantity: 30, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 2020, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 20, Quantity: 30, Unit Price: 30.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 2025, Quantity: 40, Unit Price: 2.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 3030, Quantity: 30, Unit Price: 10.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 4040, Quantity: 10, Unit Price: 10.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 4040, Quantity: 4, Unit Price: 40.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 5050, Quantity: 5, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 5050, Quantity: 50, Unit Price: 2.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 5050, Quantity: 10, Unit Price: 5.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 4545, Quantity: 4, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 01, Quantity: 20, Unit Price: 25.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 500, Quantity: 50, Unit Price: 10.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 2000, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 30, Quantity: 30, Unit Price: 30.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 400, Quantity: 40, Unit Price: 10.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 400, Quantity: 40, Unit Price: 4.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 1010, Quantity: 10, Unit Price: 10.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 000, Quantity: 20, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 2020, Quantity: 20, Unit Price: 100.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 2021, Quantity: 21, Unit Price: 20.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 6464, Quantity: 60, Unit Price: 6.0
+2023-09-30 14:14:50 | INFO | retrieveItems | Item Code: 3030, Quantity: 30, Unit Price: 10.0
+2023-09-30 14:15:35 | INFO | login | Incorrect password. Attempts left: 2
+2023-09-30 14:15:46 | INFO | login | Incorrect password. Attempts left: 1
+2023-09-30 14:15:57 | INFO | login | Successful login!
+2023-09-30 14:16:05 | INFO | deleteItem | deleteItem method called.
