@@ -8,7 +8,7 @@ import java.util.Set;
 public class WorkingWithCollections {
 
     public static void main(String[] args) {
-        // workingWithListAndArrayList();
+        workingWithListAndArrayList();
         workingWithSetAndHashSet();
     }
 
@@ -26,6 +26,7 @@ public class WorkingWithCollections {
         System.out.println(students.size());
         System.out.println(students.isEmpty());
         System.out.println(students.contains(winnie));
+
     }
 
     private static void printSet(Set<Student> students) {
